@@ -1,0 +1,247 @@
+/*
+ Name: Fylo data storage component.
+ Description: A Frontendmentor.io coding challenge.
+ Author: Federico Borzani
+ Author URL:  https://github.com/eserengo/
+*/
+
+/* --- TAGS --- */
+
+:root {
+
+  /* --- FONTS --- */
+
+  font-family: "Raleway";
+  font-size: 14px;
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
+  --bold: 700;
+
+  /* --- COLOR PALETTE --- */
+
+  --Pale-Blue: hsl(243, 100%, 93%);
+  --Grayish-Blue: hsl(229, 7%, 55%);
+  --Dark-Blue: hsl(228, 56%, 26%);
+  --Very-Dark-Blue: hsl(229, 57%, 11%);
+  --Gradient-1: hsl(6, 100%, 80%);
+  --Gradient-2: hsl(335, 100%, 65%);
+
+}
+
+* {
+  box-sizing: border-box;
+  max-width: 100%;
+  padding: 0%;
+  margin: 0%;
+  user-select: none;
+}
+
+body {
+  min-height: 100vh;
+}
+
+ul, li {
+  list-style-type: none;
+}
+
+/* --- GENERAL CLASSES --- */
+
+.hidden {
+  display: none;
+}
+
+.selectable:hover {
+  cursor: pointer;
+  user-select: all;
+}
+
+.rel {
+  position: relative;
+}
+
+.abs {
+  position: absolute;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.flex-col {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.flex-row {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.flex-row.center,
+.flex-col.center {
+  align-items: center;
+  justify-content: center;
+}
+
+.abs.center {
+  transform: translate(-50%, -50%);
+}
+
+/* --- SPECIFIC CLASSES --- */
+
+.main {
+  background-image: url("./images/bg-mobile.png");
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-size: 100% 100%;
+  padding: 5%;
+  gap: 24px;
+  min-width: 250px;
+  min-height: 95vh;
+}
+
+.card-1 {
+  background-color: var(--Dark-Blue);
+  border-radius: 8px;
+  border-top-right-radius: 80px;
+  padding: 10% 25% 10% 10%;
+  width: 100%;
+}
+
+.logo {
+  margin: 16px 0px 48px 24px;
+}
+
+.icon {
+  background-color: var(--Very-Dark-Blue);
+  width: 48px;
+  height: 48px;
+  margin: 8px;
+  padding: 5%;
+  border-radius: 8px;
+}
+
+.card-2 {
+  background-color: var(--Dark-Blue);
+  border-radius: 8px;
+  padding: 5%;
+  width: 100%;
+}
+
+.label {
+  color: var(--Pale-Blue);
+  text-align: center;
+}
+
+#used {
+  font-weight: var(--bold);
+  font-size: 125%;
+}
+
+#gauge {
+  margin: 5% 0% 20%;
+  width: 100%;
+  height: 32px;
+  appearance: none;
+  border: 2px solid var(--Very-Dark-Blue);
+  border-radius: 16px;
+  background-image: linear-gradient(to right, var(--Gradient-1), var(--Gradient-2));
+  border-right-width: 80px;
+}
+
+#gauge::before {
+  content: attr(min) " GB";
+  color: var(--Pale-Blue);
+  font-weight: var(--bold);
+  position: absolute;
+  top: 60%;
+  left: 8%;
+}
+
+#gauge::after {
+  content: attr(max) " GB";
+  color: var(--Pale-Blue);
+  font-weight: var(--bold);
+  position: absolute;
+  top: 60%;
+  left: 75%;
+}
+
+.popup {
+  background-color: var(--Pale-Blue);
+  border-radius: 8px;
+  color: var(--Grayish-Blue);
+  width: 50%;
+  padding: 16px;
+  text-transform: uppercase;
+  top: 100%;
+  left: 50%;
+  text-align: center;
+}
+
+#left {
+  font-size: 250%;
+  font-weight: var(--bold);
+  color: var(--Very-Dark-Blue);
+  vertical-align: middle;
+}
+
+.attribution {
+  font-size: 75%;
+  text-align: center;
+  margin-top: 8px;
+}
+
+/* --- MEDIA QUERIES --- */
+
+@media screen and (width > 375px) {
+  .main {
+    min-width: 600px;
+    background-color: var(--Very-Dark-Blue);
+    background-image: url("./images/bg-desktop.png");
+    background-repeat: no-repeat;
+    background-position: bottom left;
+    background-size: 100% 50%;
+    gap: 5%;
+    padding: 15%;
+    align-items: flex-end !important;
+    }
+  .card-1 {
+    width: 50%;
+    height: 100%;
+    padding: 5%;
+  }
+  .logo {
+    margin: 20% 0%;
+  }
+  .card-2 {
+    width: 100%;
+    height: 50%;
+    padding: 10% 5% 2.5%;
+  }
+  .popup {
+    top: 0%;
+    left: 75%;
+    border: 1px solid var(--Very-Dark-Blue);
+  }
+  .popup::after {
+    content: "";
+    border: solid var(--Very-Dark-Blue);
+    border-width: 0 1px 1px 0;
+    padding: 16px;
+    transform: rotate(45deg);
+    position: absolute;
+    top: 77%;
+    left: 77%;
+    background-color: var(--Pale-Blue);
+    z-index: 1;
+  }
+  #gauge::after,
+  #gauge::before {
+    top: 75%;
+  }
+}
